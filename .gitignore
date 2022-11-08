@@ -1,6 +1,7 @@
 *.log
 logs
 tmp
+.npmrc
 
 # Coverage reports
 coverage
