@@ -1,6 +1,6 @@
 {
   "name": "sort-by-property",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Type safe array sorting method with autocompletion of nested properties",
   "main": "src/index.ts",
   "dependencies": {
