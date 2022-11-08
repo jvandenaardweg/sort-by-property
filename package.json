@@ -1,6 +1,6 @@
 {
   "name": "sort-by-property",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Type-safe array sorting method with support for deeply nested properties and Typescript autocompletion.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
