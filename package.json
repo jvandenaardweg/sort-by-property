@@ -7,7 +7,6 @@
     "typescript": "^4.8.4"
   },
   "devDependencies": {
-    "@release-it/conventional-changelog": "^5.1.1",
     "@types/jest": "^29.2.2",
     "@types/node": "^18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
@@ -53,18 +52,12 @@
   },
   "homepage": "https://github.com/jvandenaardweg/sort-by-property#readme",
   "release-it": {
-    "plugins": {
-      "@release-it/conventional-changelog": {
-        "preset": "conventionalcommits",
-        "infile": "CHANGELOG.md"
-      }
-    },
     "git": {
       "commitMessage": "chore: release v${version}",
       "changelog": "npx auto-changelog --stdout --commit-limit false --unreleased --template https://raw.githubusercontent.com/release-it/release-it/master/templates/changelog-compact.hbs"
     },
     "hooks": {
-      "after:bump": "npx auto-changelog --commit-limit false --template https://raw.githubusercontent.com/release-it/release-it/master/templates/keepachangelog.hbs"
+      "after:bump": "npx auto-changelog -p"
     },
     "npm": {
       "publish": false
