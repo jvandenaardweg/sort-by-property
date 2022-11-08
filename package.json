@@ -26,7 +26,7 @@
     "test": "jest",
     "example": "npx ts-node ./src/examples/nested-property.ts",
     "prepare": "husky install",
-    "release": "release-it"
+    "release": "release-it --changelog"
   },
   "repository": {
     "type": "git",
@@ -51,6 +51,9 @@
   },
   "homepage": "https://github.com/jvandenaardweg/sort-by-property#readme",
   "release-it": {
+    "git": {
+      "commitMessage": "chore: release v${version}"
+    },
     "npm": {
       "publish": false
     },
