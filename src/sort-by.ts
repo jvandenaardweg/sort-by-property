@@ -60,7 +60,7 @@ export function sortBy<T>(direction: SortByDirection) {
       return b - a;
     }
 
-    // bigint asc (a -> b)
+    // bigint desc (b -> a)
     if (isBigInt(a) && isBigInt(b)) {
       if (a < b) {
         return 1;
