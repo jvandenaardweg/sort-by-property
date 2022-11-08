@@ -6,7 +6,7 @@ Type-safe array sorting method with support for deeply nested properties and Typ
 blogPosts.sort(sortByProperty('author.name', 'asc'));
 ```
 
-- Supports `string`, `number`, `Date` and `BigInt` values.
+- Supports sorting by `string`, `number`, `Date` and `BigInt` values.
 - Handles `null` and `undefined` values gracefully by moving the object to the end of the array.
 
 ## Installation
