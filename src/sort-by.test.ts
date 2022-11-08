@@ -458,5 +458,21 @@ describe('arrays', () => {
 
       expect(result).toEqual(expected);
     });
+
+    it('should sort an array with a BigInt values ascending by the number property', () => {
+      const array = [{ number: 1n }, { number: 2n }, { number: 3n }];
+      const result = [...array].sort(sortByProperty('number', 'asc'));
+      const expected = [{ number: 1n }, { number: 2n }, { number: 3n }];
+
+      expect(result).toEqual(expected);
+    });
+
+    it('should sort an array with a BigInt values descending by the number property', () => {
+      const array = [{ number: 1n }, { number: 2n }, { number: 3n }];
+      const result = [...array].sort(sortByProperty('number', 'desc'));
+      const expected = [{ number: 3n }, { number: 2n }, { number: 1n }];
+
+      expect(result).toEqual(expected);
+    });
   });
 });
