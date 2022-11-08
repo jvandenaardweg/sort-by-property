@@ -50,6 +50,54 @@ describe('arrays', () => {
       expect(result).toEqual(expected);
     });
 
+    it('should sort undefined values in an number array ascending', () => {
+      const array = [3, undefined, 1];
+      const result = [...array].sort(sortBy('asc'));
+      const expected = [1, 3, undefined];
+
+      expect(result).toEqual(expected);
+    });
+
+    it('should sort undefined values in an number array descending', () => {
+      const array = [1, undefined, 3];
+      const result = [...array].sort(sortBy('desc'));
+      const expected = [3, 1, undefined];
+
+      expect(result).toEqual(expected);
+    });
+
+    it('should sort null values in an number array ascending', () => {
+      const array = [3, null, 1];
+      const result = [...array].sort(sortBy('asc'));
+      const expected = [1, 3, null];
+
+      expect(result).toEqual(expected);
+    });
+
+    it('should sort null values in an number array descending', () => {
+      const array = [1, null, 3];
+      const result = [...array].sort(sortBy('desc'));
+      const expected = [3, 1, null];
+
+      expect(result).toEqual(expected);
+    });
+
+    it('should sort undefined values in an number array ascending', () => {
+      const array = [3, undefined, 1];
+      const result = [...array].sort(sortBy('asc'));
+      const expected = [1, 3, undefined];
+
+      expect(result).toEqual(expected);
+    });
+
+    it('should sort undefined values in an number array descending', () => {
+      const array = [1, undefined, 3];
+      const result = [...array].sort(sortBy('desc'));
+      const expected = [3, 1, undefined];
+
+      expect(result).toEqual(expected);
+    });
+
     it('should error when all array items are not from the same type while sorting descending', () => {
       const array = [1, '2', 3];
       const resultFn = () => [...array].sort(sortBy('desc'));
@@ -359,6 +407,38 @@ describe('arrays', () => {
       const array = [{ number: '1' }, { number: '22' }, { number: '2.2' }];
       const result = [...array].sort(sortByProperty('number', 'desc'));
       const expected = [{ number: '22' }, { number: '2.2' }, { number: '1' }];
+
+      expect(result).toEqual(expected);
+    });
+
+    it('should sort an array ascending by the id property with null values', () => {
+      const array = [{ id: 3 }, { id: null }, { id: 1 }];
+      const result = [...array].sort(sortByProperty('id', 'asc'));
+      const expected = [{ id: 1 }, { id: 3 }, { id: null }];
+
+      expect(result).toEqual(expected);
+    });
+
+    it('should sort an array descending by the id property with null values', () => {
+      const array = [{ id: 1 }, { id: null }, { id: 3 }];
+      const result = [...array].sort(sortByProperty('id', 'desc'));
+      const expected = [{ id: 3 }, { id: 1 }, { id: null }];
+
+      expect(result).toEqual(expected);
+    });
+
+    it('should sort an array ascending by the id property with null values', () => {
+      const array = [{ id: 3 }, { id: undefined }, { id: 1 }];
+      const result = [...array].sort(sortByProperty('id', 'asc'));
+      const expected = [{ id: 1 }, { id: 3 }, { id: undefined }];
+
+      expect(result).toEqual(expected);
+    });
+
+    it('should sort an array descending by the id property with undefined values', () => {
+      const array = [{ id: 1 }, { id: undefined }, { id: 3 }];
+      const result = [...array].sort(sortByProperty('id', 'desc'));
+      const expected = [{ id: 3 }, { id: 1 }, { id: undefined }];
 
       expect(result).toEqual(expected);
     });

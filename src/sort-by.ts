@@ -2,6 +2,7 @@ import { isDate } from '@/utils/date';
 import { isString } from '@/utils/string';
 import { isNumber } from '@/utils/number';
 import { isArray } from '@/utils/array';
+import { isNil } from './utils/null';
 
 export type SortByDirection = 'asc' | 'desc';
 
@@ -10,6 +11,7 @@ export type SortByDirection = 'asc' | 'desc';
  */
 export function sortBy<T>(direction: SortByDirection) {
   return (a: T, b: T): number => {
+    // console.log('a', a, 'b', b);
     if (direction === 'asc') {
       // number asc (a -> b)
       if (isNumber(a) && isNumber(b)) {
@@ -67,6 +69,18 @@ export function sortBy<T>(direction: SortByDirection) {
         .localeCompare(a.sort(sortBy(direction)).toString());
     }
 
+    // if a is null or undefined and b is not, a is greater than b
+    // moving the item to the end of the array
+    if (isNil(a) && b) {
+      return 1;
+    }
+
+    // if b is null or undefined and a is not, a is less than b
+    // moving the item to the end of the array
+    if (a && isNil(b)) {
+      return -1;
+    }
+
     throw new Error(
       `Can't sort, typeof a (${typeof a}: ${JSON.stringify(
         a,
@@ -85,7 +99,7 @@ export type PathOfString<T, P extends string = ''> = {
     ? PathOfString<T[K], `${P}${K}.`> extends infer S
       ? `${S & string}`
       : never
-    : T[K] extends number | number[] | string | string[] | Date | Date[]
+    : T[K] extends number | number[] | string | string[] | Date | Date[] | null | undefined
     ? `${P}${K}`
     : T[K] extends unknown[]
     ? PathOfString<T[K][number], `${P}${K}.`> extends infer S
