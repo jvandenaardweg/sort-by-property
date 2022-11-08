@@ -18,6 +18,22 @@ describe('arrays', () => {
       expect(result).toEqual(expected);
     });
 
+    it('should sort an array of numbers as strings in ascending order', () => {
+      const array = ['1', '2.2', '22', '3'];
+      const result = [...array].sort(sortBy('asc'));
+      const expected = ['1', '2.2', '3', '22'];
+
+      expect(result).toEqual(expected);
+    });
+
+    it('should sort an array of numbers as strings in descending order', () => {
+      const array = ['1', '2.2', '22', '3'];
+      const result = [...array].sort(sortBy('desc'));
+      const expected = ['22', '3', '2.2', '1'];
+
+      expect(result).toEqual(expected);
+    });
+
     it('should sort an number array ascending', () => {
       const array = [3, 2, 1];
       const result = [...array].sort(sortBy('asc'));
@@ -327,6 +343,22 @@ describe('arrays', () => {
         { date: new Date('2020-12-31') },
         { date: new Date('2019-12-31') },
       ];
+
+      expect(result).toEqual(expected);
+    });
+
+    it('should sort an array ascending by the number property', () => {
+      const array = [{ number: '1' }, { number: '22' }, { number: '2.2' }];
+      const result = [...array].sort(sortByProperty('number', 'asc'));
+      const expected = [{ number: '1' }, { number: '2.2' }, { number: '22' }];
+
+      expect(result).toEqual(expected);
+    });
+
+    it('should sort an array descending by the number property', () => {
+      const array = [{ number: '1' }, { number: '22' }, { number: '2.2' }];
+      const result = [...array].sort(sortByProperty('number', 'desc'));
+      const expected = [{ number: '22' }, { number: '2.2' }, { number: '1' }];
 
       expect(result).toEqual(expected);
     });

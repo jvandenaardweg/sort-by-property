@@ -18,6 +18,11 @@ export function sortBy<T>(direction: SortByDirection) {
 
       // string asc (a -> b)
       if (isString(a) && isString(b)) {
+        // if string is disguised as a number, cast back to an actual number to sort
+        if (!isNaN(a as number) && !isNaN(b as number)) {
+          return parseFloat(a) - parseFloat(b);
+        }
+
         return a.localeCompare(b);
       }
 
@@ -42,6 +47,10 @@ export function sortBy<T>(direction: SortByDirection) {
 
     // string desc (b -> a)
     if (isString(a) && isString(b)) {
+      // if string is disguised as a number, cast back to an actual number to sort
+      if (!isNaN(a as number) && !isNaN(b as number)) {
+        return parseFloat(b) - parseFloat(a);
+      }
       return b.localeCompare(a);
     }
 
