@@ -1,11 +1,7 @@
 import { isDate } from '@/utils/date';
 import { isString } from '@/utils/string';
 import { isNumber } from '@/utils/number';
-
-/**
- * Checks if the typeof `value` is `array`.
- */
-const isArray = (value: unknown): value is unknown[] => Array.isArray(value);
+import { isArray } from '@/utils/array';
 
 export type SortByDirection = 'asc' | 'desc';
 
