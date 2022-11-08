@@ -98,6 +98,22 @@ describe('arrays', () => {
       expect(result).toEqual(expected);
     });
 
+    it('should sort an BigInt array ascending', () => {
+      const array = [10n, 5n, 1n];
+      const result = [...array].sort(sortBy('asc'));
+      const expected = [1n, 5n, 10n];
+
+      expect(result).toEqual(expected);
+    });
+
+    it('should sort an BigInt array descending', () => {
+      const array = [1n, 10n, 5n];
+      const result = [...array].sort(sortBy('desc'));
+      const expected = [10n, 5n, 1n];
+
+      expect(result).toEqual(expected);
+    });
+
     it('should error when all array items are not from the same type while sorting descending', () => {
       const array = [1, '2', 3];
       const resultFn = () => [...array].sort(sortBy('desc'));

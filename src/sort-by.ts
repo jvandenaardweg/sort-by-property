@@ -2,12 +2,13 @@ import { isDate } from '@/utils/date';
 import { isString } from '@/utils/string';
 import { isNumber } from '@/utils/number';
 import { isArray } from '@/utils/array';
-import { isNil } from './utils/null';
+import { isNil } from '@/utils/null';
+import { isBigInt } from '@/utils/big-int';
 
 export type SortByDirection = 'asc' | 'desc';
 
 /**
- * Sorts an array with `string`, `string[]`, `number`, `number[]`, `Date`, `Date[]` values in the given `direction`.
+ * Sorts an array with `string`, `string[]`, `number`, `number[]`, `Date`, `Date[]`, `bigint` and `bigint[]` values in the given `direction`.
  */
 export function sortBy<T>(direction: SortByDirection) {
   return (a: T, b: T): number => {
@@ -16,6 +17,18 @@ export function sortBy<T>(direction: SortByDirection) {
       // number asc (a -> b)
       if (isNumber(a) && isNumber(b)) {
         return a - b;
+      }
+
+      // bigint asc (a -> b)
+      if (isBigInt(a) && isBigInt(b)) {
+        if (a < b) {
+          return -1;
+        }
+        if (a > b) {
+          return 1;
+        }
+
+        return 0;
       }
 
       // string asc (a -> b)
@@ -45,6 +58,18 @@ export function sortBy<T>(direction: SortByDirection) {
     // number desc (b -> a)
     if (isNumber(a) && isNumber(b)) {
       return b - a;
+    }
+
+    // bigint asc (a -> b)
+    if (isBigInt(a) && isBigInt(b)) {
+      if (a < b) {
+        return 1;
+      }
+      if (a > b) {
+        return -1;
+      }
+
+      return 0;
     }
 
     // string desc (b -> a)
@@ -99,7 +124,17 @@ export type PathOfString<T, P extends string = ''> = {
     ? PathOfString<T[K], `${P}${K}.`> extends infer S
       ? `${S & string}`
       : never
-    : T[K] extends number | number[] | string | string[] | Date | Date[] | null | undefined
+    : T[K] extends
+        | number
+        | number[]
+        | string
+        | string[]
+        | Date
+        | Date[]
+        | bigint
+        | bigint[]
+        | null
+        | undefined
     ? `${P}${K}`
     : T[K] extends unknown[]
     ? PathOfString<T[K][number], `${P}${K}.`> extends infer S
