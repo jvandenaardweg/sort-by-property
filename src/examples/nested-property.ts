@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { sortByProperty } from '@/sort-by';
 import util from 'util';
 
