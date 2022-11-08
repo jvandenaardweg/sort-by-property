@@ -1,6 +1,6 @@
 # sort-by-property
 
-A type-safe array sorting method with autocompletion of nested properties.
+Type-safe array sorting method with support for deeply nested properties and Typescript autocompletion.
 
 ```typescript
 blogPosts.sort(sortByProperty('author.name', 'asc'));
