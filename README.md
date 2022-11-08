@@ -1,6 +1,6 @@
-# Typed sortBy
+# sort-by-property
 
-A type safe array sorting method with autocompletion of nested properties
+A type-safe array sorting method with autocompletion of nested properties.
 
 ```typescript
 blogPosts.sort(sortByProperty('author.name', 'asc'));
@@ -66,7 +66,6 @@ Will sort the array by `author.name`:
 ```
 
 Will show a type error when you try to sort on properties that do not exist:
-
 
 ![type-error-example](https://github.com/jvandenaardweg/typed-sort-by/blob/main/src/examples/type-error-example.png?raw=true)
 
