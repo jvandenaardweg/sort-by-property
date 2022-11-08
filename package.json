@@ -1,12 +1,11 @@
 {
   "name": "sort-by-property",
   "version": "0.2.4",
-  "description": "Type safe array sorting method with autocompletion of nested properties",
-  "main": "src/index.ts",
-  "dependencies": {
-    "typescript": "^4.8.4"
-  },
+  "description": "Type-safe array sorting method with support for deeply nested properties and Typescript autocompletion.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "devDependencies": {
+    "typescript": "^4.8.4",
     "@types/jest": "^29.2.2",
     "@types/node": "^18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
@@ -25,9 +24,11 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
+    "test:watch": "jest --watch",
     "example": "npx ts-node ./src/examples/nested-property.ts",
     "prepare": "husky install",
-    "release": "release-it --changelog"
+    "release": "release-it --changelog",
+    "lint-staged": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -63,7 +64,25 @@
       "publish": false
     },
     "github": {
-      "release": true
+      "release": true,
+      "releaseName": "v${version}"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write",
+      "yarn test-single"
+    ],
+    "*.js": [
+      "prettier --write"
+    ],
+    "*.json": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "precommit": "lint-staged"
     }
   }
 }
