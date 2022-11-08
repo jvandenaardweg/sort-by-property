@@ -27,7 +27,7 @@ export function sortBy<T>(direction: SortByDirection) {
 
       // date asc (a -> b)
       if (isDate(a) && isDate(b)) {
-        return +new Date(a) - +new Date(b);
+        return +a - +b;
       }
 
       // array asc (a -> b)
@@ -51,7 +51,7 @@ export function sortBy<T>(direction: SortByDirection) {
 
     // date desc (b -> a)
     if (isDate(a) && isDate(b)) {
-      return +new Date(b) - +new Date(a);
+      return +b - +a;
     }
 
     // array desc (b -> a)
