@@ -51,6 +51,9 @@
   },
   "homepage": "https://github.com/jvandenaardweg/sort-by-property#readme",
   "release-it": {
+    "npm": {
+      "publish": false
+    },
     "github": {
       "release": true
     }
