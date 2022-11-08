@@ -2,6 +2,10 @@
 
 A type safe array sorting method with autocompletion of nested properties
 
+```typescript
+blogPosts.sort(sortByProperty('author.name', 'asc'));
+```
+
 ## Installation
 
 Install with your favorite package manager:
