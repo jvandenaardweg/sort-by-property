@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jvandenaardweg/typed-sort-by.git"
+    "url": "git+https://github.com/jvandenaardweg/sort-by-property.git"
   },
   "keywords": [
     "typescript",
@@ -45,7 +45,7 @@
   "author": "Jordy van den Aardweg <jordyvandenaardweg@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jvandenaardweg/typed-sort-by/issues"
+    "url": "https://github.com/jvandenaardweg/sort-by-property/issues"
   },
-  "homepage": "https://github.com/jvandenaardweg/typed-sort-by#readme"
+  "homepage": "https://github.com/jvandenaardweg/sort-by-property#readme"
 }
