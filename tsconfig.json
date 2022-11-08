@@ -32,7 +32,6 @@
   "include": ["**/*.ts"],
   "exclude": ["node_modules", "dist", "**/*.test.ts"],
   "ts-node": {
-    // Do not forget to `npm i -D tsconfig-paths`
     "require": ["tsconfig-paths/register"]
   }
 }
