@@ -95,18 +95,21 @@ export type PathOfString<T, P extends string = ''> = {
  * Sorts an array by the given property `path` in the given `direction`.
  *
  */
-export function sortByProperty<T>(propertyPath: PathOfString<T>, direction: SortByDirection) {
+export function sortByProperty<T extends Record<string, any>>(
+  propertyPath: PathOfString<T>,
+  direction: SortByDirection,
+) {
   return (a: T, b: T): number => {
     // Create an array of properties to traverse.
     // Example `author.name` => ['author', 'name']
     // And use reduce with the `a` and `b` objects to get the value of the property.
     const aProperty = propertyPath
       .split('.')
-      .reduce((unknownObject: any, propertyName) => unknownObject[propertyName], a);
+      .reduce((unknownObject, propertyName) => unknownObject[propertyName], a);
 
     const bProperty = propertyPath
       .split('.')
-      .reduce((unknownObject: any, propertyName) => unknownObject[propertyName], b);
+      .reduce((unknownObject, propertyName) => unknownObject[propertyName], b);
 
     return sortBy(direction)(aProperty, bProperty);
   };
