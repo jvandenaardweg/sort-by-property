@@ -10,11 +10,17 @@ blogPosts.sort(sortByProperty('author.name', 'asc'));
 
 Install with your favorite package manager:
 
-`not ready yet`
+`npm install sort-by-property`
+
+or
+
+`yarn add sort-by-property`
 
 ## Usage
 
 ```typescript
+import { sortByProperty } from 'sort-by-property';
+
 interface BlogPost {
   id: number;
   title: string;
