@@ -22,6 +22,7 @@
     "tsconfig-paths": "^4.1.0"
   },
   "scripts": {
+    "prepublish": "npm run build",
     "build": "tsc",
     "test": "jest",
     "test:watch": "jest --watch",

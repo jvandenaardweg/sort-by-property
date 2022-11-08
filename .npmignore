@@ -1,0 +1,9 @@
+src
+.github
+.husky
+.nvmrc
+.prettierrc
+coverage
+jest.config.js
+tsconfig.json
+.eslintrc
