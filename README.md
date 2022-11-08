@@ -63,8 +63,9 @@ Will sort the array by `author.name`:
 
 Will show a type error when you try to sort on properties that do not exist:
 
-```typescript
-blogPosts.sort(sortByProperty('author.city', 'asc'));
 
-// Argument of type '"author.city"' is not assignable to parameter of type 'PathOfString<BlogPost, "">'
-```
+![type-error-example](https://github.com/jvandenaardweg/typed-sort-by/blob/main/src/examples/type-error-example.png?raw=true)
+
+Will show an autocomplete of the available properties to sort on:
+
+![autocomplete](https://github.com/jvandenaardweg/typed-sort-by/blob/main/src/examples/autocomplete.png?raw=true)
