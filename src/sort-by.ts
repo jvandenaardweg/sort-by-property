@@ -12,7 +12,6 @@ export type SortByDirection = 'asc' | 'desc';
  */
 export function sortBy<T>(direction: SortByDirection) {
   return (a: T, b: T): number => {
-    // console.log('a', a, 'b', b);
     if (direction === 'asc') {
       // number asc (a -> b)
       if (isNumber(a) && isNumber(b)) {
