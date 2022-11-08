@@ -18,18 +18,6 @@ export function sortBy<T>(direction: SortByDirection) {
         return a - b;
       }
 
-      // bigint asc (a -> b)
-      if (isBigInt(a) && isBigInt(b)) {
-        if (a < b) {
-          return -1;
-        }
-        if (a > b) {
-          return 1;
-        }
-
-        return 0;
-      }
-
       // string asc (a -> b)
       if (isString(a) && isString(b)) {
         // if string is disguised as a number, cast back to an actual number to sort
@@ -52,23 +40,23 @@ export function sortBy<T>(direction: SortByDirection) {
           .toString()
           .localeCompare(b.sort(sortBy(direction)).toString());
       }
+
+      // bigint asc (a -> b)
+      if (isBigInt(a) && isBigInt(b)) {
+        if (a < b) {
+          return -1;
+        }
+        if (a > b) {
+          return 1;
+        }
+
+        return 0;
+      }
     }
 
     // number desc (b -> a)
     if (isNumber(a) && isNumber(b)) {
       return b - a;
-    }
-
-    // bigint desc (b -> a)
-    if (isBigInt(a) && isBigInt(b)) {
-      if (a < b) {
-        return 1;
-      }
-      if (a > b) {
-        return -1;
-      }
-
-      return 0;
     }
 
     // string desc (b -> a)
@@ -91,6 +79,18 @@ export function sortBy<T>(direction: SortByDirection) {
         .sort(sortBy(direction))
         .toString()
         .localeCompare(a.sort(sortBy(direction)).toString());
+    }
+
+    // bigint desc (b -> a)
+    if (isBigInt(a) && isBigInt(b)) {
+      if (a < b) {
+        return 1;
+      }
+      if (a > b) {
+        return -1;
+      }
+
+      return 0;
     }
 
     // if a is null or undefined and b is not, a is greater than b
