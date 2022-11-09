@@ -1,4 +1,4 @@
-# sort-by-property
+# sort-by-property [![npm version](https://badge.fury.io/js/sort-by-property.svg)](https://badge.fury.io/js/sort-by-property) [![mit license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jvandenaardweg/sort-by-property/blob/main/LICENSE)
 
 Type-safe array sorting method with support for deeply nested properties and Typescript autocompletion.
 
@@ -6,6 +6,9 @@ Type-safe array sorting method with support for deeply nested properties and Typ
 blogPosts.sort(sortByProperty('author.name', 'asc'));
 ```
 
+## Features
+- Type-safety and Typescript autocompletion on the properties you try to sort
+- Define nested property to sort on using a path string like: `"author.name"`
 - Supports sorting by `string`, `number`, `Date` and `BigInt` values.
 - Handles `null` and `undefined` values gracefully by moving the object to the end of the array.
 
