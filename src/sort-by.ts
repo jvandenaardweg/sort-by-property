@@ -147,7 +147,7 @@ export type PathOfString<T, P extends string = ''> = {
 }[keyof T & string];
 
 /**
- * Sorts an array by the given property `path` in the given `direction`.
+ * Sorts an array by the given property `propertyPath` in the given `direction`.
  *
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
