@@ -17,11 +17,15 @@ blogPosts.sort(sortByProperty('author.name', 'asc'));
 
 Install with your favorite package manager:
 
-`npm install sort-by-property`
+```bash
+npm install sort-by-property
+```
 
 or
 
-`yarn add sort-by-property`
+```bash
+yarn add sort-by-property
+```
 
 ## Usage
 
