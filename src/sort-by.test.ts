@@ -7,7 +7,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortBy('asc'));
       const expected = ['a', 'b', 'c'];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an string array descending', () => {
@@ -15,7 +15,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortBy('desc'));
       const expected = ['c', 'b', 'a'];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array of numbers as strings in ascending order', () => {
@@ -23,7 +23,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortBy('asc'));
       const expected = ['1', '2.2', '3', '22'];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array of numbers as strings in descending order', () => {
@@ -31,7 +31,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortBy('desc'));
       const expected = ['22', '3', '2.2', '1'];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an number array ascending', () => {
@@ -39,7 +39,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortBy('asc'));
       const expected = [1, 2, 3];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an number array descending', () => {
@@ -47,7 +47,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortBy('desc'));
       const expected = [3, 2, 1];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort undefined values in an number array ascending', () => {
@@ -55,7 +55,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortBy('asc'));
       const expected = [1, 3, undefined];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort undefined values in an number array descending', () => {
@@ -63,7 +63,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortBy('desc'));
       const expected = [3, 1, undefined];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort null values in an number array ascending', () => {
@@ -71,7 +71,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortBy('asc'));
       const expected = [1, 3, null];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort null values in an number array descending', () => {
@@ -79,7 +79,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortBy('desc'));
       const expected = [3, 1, null];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort undefined values in an number array ascending', () => {
@@ -87,7 +87,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortBy('asc'));
       const expected = [1, 3, undefined];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort undefined values in an number array descending', () => {
@@ -95,7 +95,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortBy('desc'));
       const expected = [3, 1, undefined];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an BigInt array ascending', () => {
@@ -103,7 +103,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortBy('asc'));
       const expected = [1n, 5n, 10n];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an BigInt array descending', () => {
@@ -111,7 +111,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortBy('desc'));
       const expected = [10n, 5n, 1n];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an Symbol array ascending', () => {
@@ -123,7 +123,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortBy('asc'));
       const expected = [a, b, c];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an Symbol array descending', () => {
@@ -135,7 +135,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortBy('desc'));
       const expected = [c, b, a];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should error when all array items are not from the same type while sorting descending', () => {
@@ -180,7 +180,7 @@ describe('arrays', () => {
         { post: { title: 'C' } },
       ];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array descending by nested string property', () => {
@@ -196,7 +196,7 @@ describe('arrays', () => {
         { post: { title: 'A' } },
       ];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array descending by nested string property', () => {
@@ -212,7 +212,7 @@ describe('arrays', () => {
         { post: { titles: ['C', 'B', 'A'] } },
       ];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array ascending by nested string array property', () => {
@@ -228,7 +228,7 @@ describe('arrays', () => {
         { post: { titles: ['A', 'B', 'C'] } },
       ];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array descending by nested string array property', () => {
@@ -244,7 +244,7 @@ describe('arrays', () => {
         { post: { ids: [3, 2, 1] } },
       ];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array ascending by nested numbers array property', () => {
@@ -260,7 +260,7 @@ describe('arrays', () => {
         { post: { ids: [1, 2, 3] } },
       ];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array descending by nested date array property', () => {
@@ -300,7 +300,7 @@ describe('arrays', () => {
         },
       ];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array ascending by nested date array property', () => {
@@ -340,7 +340,7 @@ describe('arrays', () => {
         },
       ];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array ascending by nested number property', () => {
@@ -348,7 +348,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortByProperty('post.id', 'asc'));
       const expected = [{ post: { id: 1 } }, { post: { id: 2 } }, { post: { id: 3 } }];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array descending by nested number property', () => {
@@ -356,7 +356,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortByProperty('post.id', 'desc'));
       const expected = [{ post: { id: 3 } }, { post: { id: 2 } }, { post: { id: 1 } }];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array ascending by the id property', () => {
@@ -364,7 +364,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortByProperty('id', 'asc'));
       const expected = [{ id: 1 }, { id: 2 }, { id: 3 }];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array descending by the id property', () => {
@@ -372,7 +372,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortByProperty('id', 'desc'));
       const expected = [{ id: 3 }, { id: 2 }, { id: 1 }];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array ascending by the firstName property', () => {
@@ -390,7 +390,7 @@ describe('arrays', () => {
         { firstName: 'Xander' },
       ];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array descending by the firstName property', () => {
@@ -408,7 +408,7 @@ describe('arrays', () => {
         { firstName: 'Anton' },
       ];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array ascending by the date property', () => {
@@ -424,7 +424,7 @@ describe('arrays', () => {
         { date: new Date('2021-12-31') },
       ];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array descending by the date property', () => {
@@ -440,7 +440,7 @@ describe('arrays', () => {
         { date: new Date('2019-12-31') },
       ];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array ascending by the number property', () => {
@@ -448,7 +448,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortByProperty('number', 'asc'));
       const expected = [{ number: '1' }, { number: '2.2' }, { number: '22' }];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array descending by the number property', () => {
@@ -456,7 +456,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortByProperty('number', 'desc'));
       const expected = [{ number: '22' }, { number: '2.2' }, { number: '1' }];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array ascending by the id property with null values', () => {
@@ -464,7 +464,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortByProperty('id', 'asc'));
       const expected = [{ id: 1 }, { id: 3 }, { id: null }];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array descending by the id property with null values', () => {
@@ -472,7 +472,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortByProperty('id', 'desc'));
       const expected = [{ id: 3 }, { id: 1 }, { id: null }];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array ascending by the id property with null values', () => {
@@ -480,7 +480,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortByProperty('id', 'asc'));
       const expected = [{ id: 1 }, { id: 3 }, { id: undefined }];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array descending by the id property with undefined values', () => {
@@ -488,7 +488,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortByProperty('id', 'desc'));
       const expected = [{ id: 3 }, { id: 1 }, { id: undefined }];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array with a BigInt values ascending by the number property', () => {
@@ -496,7 +496,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortByProperty('number', 'asc'));
       const expected = [{ number: 1n }, { number: 2n }, { number: 3n }];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array with a BigInt values descending by the number property', () => {
@@ -504,7 +504,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortByProperty('number', 'desc'));
       const expected = [{ number: 3n }, { number: 2n }, { number: 1n }];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array with a Symbol values ascending by the number property', () => {
@@ -516,7 +516,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortByProperty('symbol', 'asc'));
       const expected = [{ symbol: a }, { symbol: b }, { symbol: c }];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array with a Symbol values descending by the number property', () => {
@@ -528,7 +528,7 @@ describe('arrays', () => {
       const result = unsortedArray.sort(sortByProperty('symbol', 'desc'));
       const expected = [{ symbol: c }, { symbol: b }, { symbol: a }];
 
-      expect(result).toEqual(expected);
+      expect(result).toStrictEqual(expected);
     });
   });
 });
