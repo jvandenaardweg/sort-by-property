@@ -1,4 +1,4 @@
-import { sortByProperty } from '../sort-by';
+import _sortBy from 'lodash.sortby';
 
 interface BlogPost {
   id: number;
@@ -28,7 +28,7 @@ const array = Array<BlogPost>(10_000_000).fill(blogPost);
 
 console.time('perf');
 
-const sorted = [...array].sort(sortByProperty('id', 'asc'));
+const sorted = _sortBy(array, 'id');
 
 console.log(sorted);
 

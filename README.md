@@ -12,6 +12,7 @@ blogPosts.sort(sortByProperty('author.name', 'asc'));
 - Define nested property to sort on using a path string like: `"author.name"`
 - Supports sorting by `string`, `number`, `Date`, `Symbol` and `BigInt` values.
 - Handles `null` and `undefined` values gracefully by moving the object to the end of the array.
+- High performance, up to 3 times faster than lodash `orderBy` and `sortBy` on an array with 10 million items: ~450ms vs ~1350ms.
 
 ## Installation
 
