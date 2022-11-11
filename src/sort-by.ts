@@ -145,18 +145,18 @@ export function sortBy<T>(direction: SortByDirection): SortFunctionReturn<T> {
  *
  * Using this type gives auto-completion of object properties on the `propertyPath` parameter on `sortByProperty`.
  */
-export type PathOfString<T, P extends string = ''> = {
+export type PropertyPath<T, P extends string = ''> = {
   [K in keyof T & string]: T[K] extends Record<string, unknown>
-    ? PathOfString<T[K], `${P}${K}.`> extends infer S
+    ? PropertyPath<T[K], `${P}${K}.`> extends infer S
       ? `${S & string}`
       : never
     : T[K] extends SupportedTypes
     ? `${P}${K}`
     : T[K] extends unknown[]
-    ? PathOfString<T[K][number], `${P}${K}.`> extends infer S
+    ? PropertyPath<T[K][number], `${P}${K}.`> extends infer S
       ? `${S & string}`
       : never
-    : PathOfString<T[K], `${P}${K}.`> extends infer S
+    : PropertyPath<T[K], `${P}${K}.`> extends infer S
     ? `${S & string}`
     : never;
 }[keyof T & string];
@@ -171,7 +171,7 @@ const getPropertyValueFromNames = (propertyNames: string[], unknownObject: any) 
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function sortByProperty<T extends Record<string, any>>(
-  propertyPath: PathOfString<T>,
+  propertyPath: PropertyPath<T>,
   direction: SortByDirection,
 ): SortFunctionReturn<T> {
   // Create an array of properties to traverse.
