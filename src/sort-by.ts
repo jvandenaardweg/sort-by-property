@@ -146,6 +146,10 @@ export type PathOfString<T, P extends string = ''> = {
     : never;
 }[keyof T & string];
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const getPropertyValueFromNames = (propertyNames: string[], unknownObject: any) =>
+  propertyNames.reduce((unknownObject, propertyName) => unknownObject[propertyName], unknownObject);
+
 /**
  * Sorts an array by the given property `propertyPath` in the given `direction`.
  *
@@ -168,15 +172,9 @@ export function sortByProperty<T extends Record<string, any>>(
     // There are multiple properties.
     // Using reduce with the `a` and `b` objects to get the value of the property.
     if (propertyNames.length > 1) {
-      aPropertyValue = propertyNames.reduce(
-        (unknownObject, propertyName) => unknownObject[propertyName],
-        a,
-      );
+      aPropertyValue = getPropertyValueFromNames(propertyNames, a);
 
-      bPropertyValue = propertyNames.reduce(
-        (unknownObject, propertyName) => unknownObject[propertyName],
-        b,
-      );
+      bPropertyValue = getPropertyValueFromNames(propertyNames, b);
     }
 
     return sortBy(direction)(aPropertyValue, bPropertyValue);
