@@ -507,7 +507,7 @@ describe('arrays', () => {
       expect(result).toEqual(expected);
     });
 
-    it('should sort an array with a BigInt values ascending by the number property', () => {
+    it('should sort an array with a Symbol values ascending by the number property', () => {
       const a = Symbol('a');
       const b = Symbol('b');
       const c = Symbol('c');
@@ -519,7 +519,7 @@ describe('arrays', () => {
       expect(result).toEqual(expected);
     });
 
-    it('should sort an array with a BigInt values descending by the number property', () => {
+    it('should sort an array with a Symbol values descending by the number property', () => {
       const a = Symbol('a');
       const b = Symbol('b');
       const c = Symbol('c');
