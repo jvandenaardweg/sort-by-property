@@ -44,7 +44,7 @@ interface BlogPost {
 const blogPosts: BlogPost[] = [
   {
     id: 1,
-    title: 'A title',
+    title: Never gonna run around and desert you,
     author: {
       id: 10,
       name: 'Joe',
@@ -52,7 +52,7 @@ const blogPosts: BlogPost[] = [
   },
   {
     id: 2,
-    title: 'Better title',
+    title: 'Never gonna let you down',
     author: {
       id: 20,
       name: 'Ben',
@@ -60,7 +60,7 @@ const blogPosts: BlogPost[] = [
   },
   {
     id: 3,
-    title: 'Cake title',
+    title: 'Never gonna give you up',
     author: {
       id: 30,
       name: 'Alice',
@@ -76,9 +76,9 @@ Will sort the array by `author.name`:
 
 ```typescript
 [
-  { id: 3, title: 'Cake title', author: { id: 30, name: 'Alice' } },
-  { id: 2, title: 'Better title', author: { id: 20, name: 'Ben' } },
-  { id: 1, title: 'A title', author: { id: 10, name: 'Joe' } },
+  { id: 3, title: 'Never gonna give you up', author: { id: 30, name: 'Alice' } },
+  { id: 2, title: 'Never gonna let you down', author: { id: 20, name: 'Ben' } },
+  { id: 1, title: 'Never gonna run around and desert you', author: { id: 10, name: 'Joe' } },
 ];
 ```
 
