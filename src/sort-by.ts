@@ -5,6 +5,8 @@ import { isArray } from '@/utils/array';
 import { isNil } from '@/utils/null';
 import { isBigInt } from '@/utils/big-int';
 
+type SortFunctionReturn<T> = (a: T, b: T) => number;
+
 export type SortByDirection = 'asc' | 'desc';
 
 export type SupportedTypes =
@@ -22,7 +24,7 @@ export type SupportedTypes =
 /**
  * Sorts an array with `string`, `string[]`, `number`, `number[]`, `Date`, `Date[]`, `bigint` and `bigint[]` values in the given `direction`.
  */
-export function sortBy<T>(direction: SortByDirection) {
+export function sortBy<T>(direction: SortByDirection): SortFunctionReturn<T> {
   return (a: T, b: T): number => {
     if (direction === 'asc') {
       // number asc (a -> b)
@@ -158,7 +160,7 @@ const getPropertyValueFromNames = (propertyNames: string[], unknownObject: any) 
 export function sortByProperty<T extends Record<string, any>>(
   propertyPath: PathOfString<T>,
   direction: SortByDirection,
-) {
+): SortFunctionReturn<T> {
   // Create an array of properties to traverse.
   // Example `author.name` => ['author', 'name']
   const propertyNames = propertyPath.split('.');
