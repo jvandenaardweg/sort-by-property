@@ -1,52 +1,73 @@
 import { isArray } from './array';
 
+// an array of values that return true for isArray
+const arrayValues = [
+  [],
+  [0],
+  [1],
+  [2],
+  ['0'],
+  ['1'],
+  ['2'],
+  [null],
+  [undefined],
+  [false],
+  [true],
+  [{}],
+  [[]],
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  [() => {}],
+  [new Date()],
+  [new Date(0)],
+  [new Date(1)],
+  [new Date(2)],
+  [new Date('0')],
+  [new Date('1')],
+  [new Date('2')],
+  [new Date('2020-01-01')],
+  [new Date('2020-01-01T00:00:00.000Z')],
+  [new Date('2020-01-01T00:00:00.001Z')],
+  [BigInt(0)],
+  [BigInt(1)],
+  [BigInt(2)],
+];
+
+// an array of values that return false for isArray
+const nonArrayValues = [
+  0,
+  1,
+  2,
+  '0',
+  '1',
+  '2',
+  null,
+  undefined,
+  false,
+  true,
+  {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  () => {},
+  new Date(),
+  new Date(0),
+  new Date(1),
+  new Date(2),
+  new Date('0'),
+  new Date('1'),
+  new Date('2'),
+  new Date('2020-01-01'),
+  new Date('2020-01-01T00:00:00.000Z'),
+  new Date('2020-01-01T00:00:00.001Z'),
+  BigInt(0),
+  BigInt(1),
+  BigInt(2),
+];
+
 describe('isArray', () => {
-  it('should return true if given an array of strings', () => {
-    const result = isArray(['a', 'b', 'c']);
-    const expected = true;
-
-    expect(result).toBe(expected);
+  it.each(arrayValues)('should return true for %p', (...values) => {
+    expect(isArray(values)).toBe(true);
   });
 
-  it('should return true if given an array of numbers', () => {
-    const result = isArray([1, 2, 3]);
-    const expected = true;
-
-    expect(result).toBe(expected);
-  });
-
-  it('should return false if given a string', () => {
-    const result = isArray('a string');
-    const expected = false;
-
-    expect(result).toBe(expected);
-  });
-
-  it('should return false if given 0', () => {
-    const result = isArray(0);
-    const expected = false;
-
-    expect(result).toBe(expected);
-  });
-
-  it('should return false if given 1', () => {
-    const result = isArray(1);
-    const expected = false;
-
-    expect(result).toBe(expected);
-  });
-
-  it('should return false if given true', () => {
-    const result = isArray(true);
-    const expected = false;
-
-    expect(result).toBe(expected);
-  });
-
-  it('should return false if given NaN', () => {
-    const result = isArray(NaN);
-    const expected = false;
-
-    expect(result).toBe(expected);
+  it.each(nonArrayValues)('should return false for %p', value => {
+    expect(isArray(value)).toBe(false);
   });
 });

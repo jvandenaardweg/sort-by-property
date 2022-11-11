@@ -1,52 +1,33 @@
 import { isBigInt } from './big-int';
 
+// an array of BigInt's that return true for isBigInt
+const bigIntValues = [BigInt(0), BigInt(1), BigInt(2)];
+
+// an array of BigInt's that return false for isBigInt
+const nonBigIntValues = [
+  0,
+  1,
+  2,
+  '0',
+  '1',
+  '2',
+  null,
+  undefined,
+  false,
+  true,
+  {},
+  [],
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  () => {},
+  new Date(),
+];
+
 describe('isBigInt', () => {
-  it('should return true if given a BigInt of 10n', () => {
-    const result = isBigInt(10n);
-    const expected = true;
-
-    expect(result).toBe(expected);
+  it.each(bigIntValues)('should return true for %p', value => {
+    expect(isBigInt(value)).toBe(true);
   });
 
-  it('should return true if given a BigInt of 1n', () => {
-    const result = isBigInt(1n);
-    const expected = true;
-
-    expect(result).toBe(expected);
-  });
-
-  it('should return false if given "2021-12-31"', () => {
-    const result = isBigInt('2021-12-31');
-    const expected = false;
-
-    expect(result).toBe(expected);
-  });
-
-  it('should return false if given 0', () => {
-    const result = isBigInt(0);
-    const expected = false;
-
-    expect(result).toBe(expected);
-  });
-
-  it('should return false if given 1', () => {
-    const result = isBigInt(1);
-    const expected = false;
-
-    expect(result).toBe(expected);
-  });
-
-  it('should return false if given true', () => {
-    const result = isBigInt(true);
-    const expected = false;
-
-    expect(result).toBe(expected);
-  });
-
-  it('should return false if given NaN', () => {
-    const result = isBigInt(NaN);
-    const expected = false;
-
-    expect(result).toBe(expected);
+  it.each(nonBigIntValues)('should return false for %p', value => {
+    expect(isBigInt(value)).toBe(false);
   });
 });

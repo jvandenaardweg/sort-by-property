@@ -1,52 +1,43 @@
 import { isDate } from './date';
 
+// an array of dates that return true for isDate
+const dateValues = [
+  new Date(),
+  new Date(0),
+  new Date(1),
+  new Date(2),
+  new Date('0'),
+  new Date('1'),
+  new Date('2'),
+  new Date('2020-01-01'),
+  new Date('2020-01-01T00:00:00.000Z'),
+  new Date('2020-01-01T00:00:00.001Z'),
+];
+
+// an array of values that return false for isDate
+const nonDateValues = [
+  0,
+  1,
+  2,
+  '0',
+  '1',
+  '2',
+  null,
+  undefined,
+  false,
+  true,
+  {},
+  [],
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  () => {},
+];
+
 describe('isDate', () => {
-  it('should return true if given a Date object', () => {
-    const result = isDate(new Date());
-    const expected = true;
-
-    expect(result).toBe(expected);
+  it.each(dateValues)('should return true for %p', value => {
+    expect(isDate(value)).toBe(true);
   });
 
-  it('should return true if given a date object with a defined date string', () => {
-    const result = isDate(new Date('2021-12-31'));
-    const expected = true;
-
-    expect(result).toBe(expected);
-  });
-
-  it('should return false if given "2021-12-31"', () => {
-    const result = isDate('2021-12-31');
-    const expected = false;
-
-    expect(result).toBe(expected);
-  });
-
-  it('should return false if given 0', () => {
-    const result = isDate(0);
-    const expected = false;
-
-    expect(result).toBe(expected);
-  });
-
-  it('should return false if given 1', () => {
-    const result = isDate(1);
-    const expected = false;
-
-    expect(result).toBe(expected);
-  });
-
-  it('should return false if given true', () => {
-    const result = isDate(true);
-    const expected = false;
-
-    expect(result).toBe(expected);
-  });
-
-  it('should return false if given NaN', () => {
-    const result = isDate(NaN);
-    const expected = false;
-
-    expect(result).toBe(expected);
+  it.each(nonDateValues)('should return false for %p', value => {
+    expect(isDate(value)).toBe(false);
   });
 });
