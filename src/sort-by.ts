@@ -160,16 +160,24 @@ export function sortByProperty<T extends Record<string, any>>(
   const propertyNames = propertyPath.split('.');
 
   return (a: T, b: T): number => {
-    // And use reduce with the `a` and `b` objects to get the value of the property.
-    const aPropertyValue = propertyNames.reduce(
-      (unknownObject, propertyName) => unknownObject[propertyName],
-      a,
-    );
+    // Set the first a and b value so we can skip the reduce part below if there's only 1 property name
+    // Doing it this way has a small performance benefit on large arrays
+    let aPropertyValue = a[propertyNames[0]];
+    let bPropertyValue = b[propertyNames[0]];
 
-    const bPropertyValue = propertyNames.reduce(
-      (unknownObject, propertyName) => unknownObject[propertyName],
-      b,
-    );
+    // There are multiple properties.
+    // Using reduce with the `a` and `b` objects to get the value of the property.
+    if (propertyNames.length > 1) {
+      aPropertyValue = propertyNames.reduce(
+        (unknownObject, propertyName) => unknownObject[propertyName],
+        a,
+      );
+
+      bPropertyValue = propertyNames.reduce(
+        (unknownObject, propertyName) => unknownObject[propertyName],
+        b,
+      );
+    }
 
     return sortBy(direction)(aPropertyValue, bPropertyValue);
   };

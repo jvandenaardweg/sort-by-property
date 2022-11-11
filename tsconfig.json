@@ -32,6 +32,7 @@
   "include": ["**/*.ts"],
   "exclude": ["node_modules", "dist", "**/*.test.ts"],
   "ts-node": {
+    "swc": true,
     "require": ["tsconfig-paths/register"]
   }
 }

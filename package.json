@@ -5,7 +5,8 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "devDependencies": {
-    "typescript": "^4.8.4",
+    "@swc/core": "^1.3.14",
+    "@swc/helpers": "^0.4.12",
     "@types/jest": "^29.2.2",
     "@types/node": "^18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
@@ -15,18 +16,22 @@
     "husky": "^8.0.2",
     "jest": "^29.3.0",
     "lint-staged": "^13.0.3",
+    "node-dev": "^7.4.3",
+    "nodemon": "^2.0.20",
     "prettier": "^2.7.1",
+    "regenerator-runtime": "^0.13.10",
     "release-it": "^15.5.0",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
-    "tsconfig-paths": "^4.1.0"
+    "tsconfig-paths": "^4.1.0",
+    "typescript": "^4.8.4"
   },
   "scripts": {
     "prepublish": "npm run build",
     "build": "tsc",
     "test": "jest",
     "test:watch": "jest --watch",
-    "example": "npx ts-node ./src/examples/nested-property.ts",
+    "example": "nodemon --watch src src/examples/performance.ts",
     "prepare": "husky install",
     "release": "release-it --changelog",
     "lint-staged": "lint-staged"
