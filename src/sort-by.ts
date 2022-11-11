@@ -155,22 +155,22 @@ export function sortByProperty<T extends Record<string, any>>(
   propertyPath: PathOfString<T>,
   direction: SortByDirection,
 ) {
+  // Create an array of properties to traverse.
+  // Example `author.name` => ['author', 'name']
   const propertyNames = propertyPath.split('.');
 
   return (a: T, b: T): number => {
-    // Create an array of properties to traverse.
-    // Example `author.name` => ['author', 'name']
     // And use reduce with the `a` and `b` objects to get the value of the property.
-    const aProperty = propertyNames.reduce(
+    const aPropertyValue = propertyNames.reduce(
       (unknownObject, propertyName) => unknownObject[propertyName],
       a,
     );
 
-    const bProperty = propertyNames.reduce(
+    const bPropertyValue = propertyNames.reduce(
       (unknownObject, propertyName) => unknownObject[propertyName],
       b,
     );
 
-    return sortBy(direction)(aProperty, bProperty);
+    return sortBy(direction)(aPropertyValue, bPropertyValue);
   };
 }
