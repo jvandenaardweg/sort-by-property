@@ -1,4 +1,4 @@
-import { isString } from './string';
+import { getObjectKeysFromPathString, isString } from './string';
 
 // an array of values that return true for isString
 const stringValues = [
@@ -45,5 +45,23 @@ describe('isString', () => {
 
   it.each(nonStringValues)('should return false for %p', value => {
     expect(isString(value)).toBe(false);
+  });
+});
+
+describe('getObjectKeysFromPathString', () => {
+  it('should return an array of strings', () => {
+    const path = 'a';
+    const result = getObjectKeysFromPathString(path);
+    const expected = ['a'];
+
+    expect(result).toStrictEqual(expected);
+  });
+
+  it('should return an array of strings', () => {
+    const path = 'a.b.c';
+    const result = getObjectKeysFromPathString(path);
+    const expected = ['a', 'b', 'c'];
+
+    expect(result).toStrictEqual(expected);
   });
 });

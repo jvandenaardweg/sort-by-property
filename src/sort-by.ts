@@ -1,10 +1,11 @@
 import { isDate } from '@/utils/date';
-import { isString } from '@/utils/string';
+import { getObjectKeysFromPathString, isString } from '@/utils/string';
 import { isNumber } from '@/utils/number';
 import { isArray } from '@/utils/array';
 import { isNil } from '@/utils/null';
 import { isBigInt } from '@/utils/big-int';
 import { isSymbol } from './utils/symbol';
+import { getPropertyValueFromNames } from './utils/object';
 
 type SortFunctionReturn<T> = (a: T, b: T) => number;
 
@@ -161,10 +162,6 @@ export type PropertyPath<T, P extends string = ''> = {
     : never;
 }[keyof T & string];
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const getPropertyValueFromNames = (propertyNames: string[], unknownObject: any) =>
-  propertyNames.reduce((unknownObject, propertyName) => unknownObject[propertyName], unknownObject);
-
 /**
  * Sorts an array by the given property `propertyPath` in the given `direction`.
  *
@@ -176,7 +173,7 @@ export function sortByProperty<T extends Record<string, any>>(
 ): SortFunctionReturn<T> {
   // Create an array of properties to traverse.
   // Example `author.name` => ['author', 'name']
-  const propertyNames = propertyPath.split('.');
+  const propertyNames = getObjectKeysFromPathString(propertyPath);
 
   return (a: T, b: T): number => {
     // Set the first a and b value so we can skip the reduce part below if there's only 1 property name
