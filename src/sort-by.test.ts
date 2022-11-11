@@ -264,20 +264,24 @@ describe('arrays', () => {
     });
 
     it('should sort an array descending by nested date array property', () => {
+      const a = new Date('2021-12-31');
+      const b = new Date('2022-12-31');
+      const c = new Date('2023-12-31');
+
       const unsortedArray = [
         {
           post: {
-            dates: [new Date('2023-12-31'), new Date('2022-12-31'), new Date('2021-12-31')],
+            dates: [c, b, a],
           },
         },
         {
           post: {
-            dates: [new Date('2021-12-31'), new Date('2023-12-31'), new Date('2022-12-31')],
+            dates: [a, c, b],
           },
         },
         {
           post: {
-            dates: [new Date('2022-12-31'), new Date('2023-12-31'), new Date('2021-12-31')],
+            dates: [b, c, a],
           },
         },
       ];
@@ -285,17 +289,17 @@ describe('arrays', () => {
       const expected = [
         {
           post: {
-            dates: [new Date('2023-12-31'), new Date('2022-12-31'), new Date('2021-12-31')],
+            dates: [c, b, a],
           },
         },
         {
           post: {
-            dates: [new Date('2023-12-31'), new Date('2022-12-31'), new Date('2021-12-31')],
+            dates: [c, b, a],
           },
         },
         {
           post: {
-            dates: [new Date('2023-12-31'), new Date('2022-12-31'), new Date('2021-12-31')],
+            dates: [c, b, a],
           },
         },
       ];
@@ -304,20 +308,24 @@ describe('arrays', () => {
     });
 
     it('should sort an array ascending by nested date array property', () => {
+      const a = new Date('2021-12-31');
+      const b = new Date('2022-12-31');
+      const c = new Date('2023-12-31');
+
       const unsortedArray = [
         {
           post: {
-            dates: [new Date('2023-12-31'), new Date('2022-12-31'), new Date('2021-12-31')],
+            dates: [c, b, a],
           },
         },
         {
           post: {
-            dates: [new Date('2021-12-31'), new Date('2023-12-31'), new Date('2022-12-31')],
+            dates: [a, c, b],
           },
         },
         {
           post: {
-            dates: [new Date('2022-12-31'), new Date('2023-12-31'), new Date('2021-12-31')],
+            dates: [b, c, a],
           },
         },
       ];
@@ -325,17 +333,17 @@ describe('arrays', () => {
       const expected = [
         {
           post: {
-            dates: [new Date('2021-12-31'), new Date('2022-12-31'), new Date('2023-12-31')],
+            dates: [a, b, c],
           },
         },
         {
           post: {
-            dates: [new Date('2021-12-31'), new Date('2022-12-31'), new Date('2023-12-31')],
+            dates: [a, b, c],
           },
         },
         {
           post: {
-            dates: [new Date('2021-12-31'), new Date('2022-12-31'), new Date('2023-12-31')],
+            dates: [a, b, c],
           },
         },
       ];
@@ -344,189 +352,299 @@ describe('arrays', () => {
     });
 
     it('should sort an array ascending by nested number property', () => {
-      const unsortedArray = [{ post: { id: 3 } }, { post: { id: 2 } }, { post: { id: 1 } }];
+      const a = { post: { id: 1 } };
+      const b = { post: { id: 2 } };
+      const c = { post: { id: 3 } };
+
+      const unsortedArray = [c, b, a];
       const result = unsortedArray.sort(sortByProperty('post.id', 'asc'));
-      const expected = [{ post: { id: 1 } }, { post: { id: 2 } }, { post: { id: 3 } }];
+      const expected = [a, b, c];
 
       expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array descending by nested number property', () => {
-      const unsortedArray = [{ post: { id: 1 } }, { post: { id: 2 } }, { post: { id: 3 } }];
+      const a = { post: { id: 1 } };
+      const b = { post: { id: 2 } };
+      const c = { post: { id: 3 } };
+
+      const unsortedArray = [a, b, c];
       const result = unsortedArray.sort(sortByProperty('post.id', 'desc'));
-      const expected = [{ post: { id: 3 } }, { post: { id: 2 } }, { post: { id: 1 } }];
+      const expected = [c, b, a];
 
       expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array ascending by the id property', () => {
-      const unsortedArray = [{ id: 3 }, { id: 2 }, { id: 1 }];
+      const a = { id: 1 };
+      const b = { id: 2 };
+      const c = { id: 3 };
+
+      const unsortedArray = [c, b, a];
       const result = unsortedArray.sort(sortByProperty('id', 'asc'));
-      const expected = [{ id: 1 }, { id: 2 }, { id: 3 }];
+      const expected = [a, b, c];
 
       expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array descending by the id property', () => {
-      const unsortedArray = [{ id: 1 }, { id: 2 }, { id: 3 }];
+      const a = { id: 1 };
+      const b = { id: 2 };
+      const c = { id: 3 };
+
+      const unsortedArray = [a, b, c];
       const result = unsortedArray.sort(sortByProperty('id', 'desc'));
-      const expected = [{ id: 3 }, { id: 2 }, { id: 1 }];
+      const expected = [c, b, a];
 
       expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array ascending by the firstName property', () => {
-      const unsortedArray = [
-        { firstName: 'Xander' },
-        { firstName: 'Jan' },
-        { firstName: 'Bert' },
-        { firstName: 'Anton' },
-      ];
+      const a = { firstName: 'Anton' };
+      const b = { firstName: 'Bert' };
+      const c = { firstName: 'Jan' };
+
+      const unsortedArray = [a, c, b];
       const result = unsortedArray.sort(sortByProperty('firstName', 'asc'));
-      const expected = [
-        { firstName: 'Anton' },
-        { firstName: 'Bert' },
-        { firstName: 'Jan' },
-        { firstName: 'Xander' },
-      ];
+      const expected = [a, b, c];
 
       expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array descending by the firstName property', () => {
-      const unsortedArray = [
-        { firstName: 'Anton' },
-        { firstName: 'Bert' },
-        { firstName: 'Jan' },
-        { firstName: 'Xander' },
-      ];
+      const a = { firstName: 'Anton' };
+      const b = { firstName: 'Bert' };
+      const c = { firstName: 'Jan' };
+
+      const unsortedArray = [a, b, c];
       const result = unsortedArray.sort(sortByProperty('firstName', 'desc'));
-      const expected = [
-        { firstName: 'Xander' },
-        { firstName: 'Jan' },
-        { firstName: 'Bert' },
-        { firstName: 'Anton' },
-      ];
+      const expected = [c, b, a];
 
       expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array ascending by the date property', () => {
-      const unsortedArray = [
-        { date: new Date('2021-12-31') },
-        { date: new Date('2020-12-31') },
-        { date: new Date('2019-12-31') },
-      ];
+      const a = { date: new Date('2019-12-31') };
+      const b = { date: new Date('2020-12-31') };
+      const c = { date: new Date('2021-12-31') };
+
+      const unsortedArray = [c, b, a];
       const result = unsortedArray.sort(sortByProperty('date', 'asc'));
-      const expected = [
-        { date: new Date('2019-12-31') },
-        { date: new Date('2020-12-31') },
-        { date: new Date('2021-12-31') },
-      ];
+      const expected = [a, b, c];
 
       expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array descending by the date property', () => {
-      const unsortedArray = [
-        { date: new Date('2019-12-31') },
-        { date: new Date('2020-12-31') },
-        { date: new Date('2021-12-31') },
-      ];
+      const a = { date: new Date('2019-12-31') };
+      const b = { date: new Date('2020-12-31') };
+      const c = { date: new Date('2021-12-31') };
+
+      const unsortedArray = [a, b, c];
       const result = unsortedArray.sort(sortByProperty('date', 'desc'));
-      const expected = [
-        { date: new Date('2021-12-31') },
-        { date: new Date('2020-12-31') },
-        { date: new Date('2019-12-31') },
-      ];
+      const expected = [c, b, a];
 
       expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array ascending by the number property', () => {
-      const unsortedArray = [{ number: '1' }, { number: '22' }, { number: '2.2' }];
+      const a = { number: '1' };
+      const b = { number: '2.2' };
+      const c = { number: '22' };
+
+      const unsortedArray = [a, c, b];
       const result = unsortedArray.sort(sortByProperty('number', 'asc'));
-      const expected = [{ number: '1' }, { number: '2.2' }, { number: '22' }];
+      const expected = [a, b, c];
 
       expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array descending by the number property', () => {
-      const unsortedArray = [{ number: '1' }, { number: '22' }, { number: '2.2' }];
+      const a = { number: '1' };
+      const b = { number: '2.2' };
+      const c = { number: '22' };
+
+      const unsortedArray = [a, c, b];
       const result = unsortedArray.sort(sortByProperty('number', 'desc'));
-      const expected = [{ number: '22' }, { number: '2.2' }, { number: '1' }];
+      const expected = [c, b, a];
 
       expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array ascending by the id property with null values', () => {
-      const unsortedArray = [{ id: 3 }, { id: null }, { id: 1 }];
+      const a = { id: 1 };
+      const b = { id: null };
+      const c = { id: 3 };
+
+      const unsortedArray = [c, b, a];
       const result = unsortedArray.sort(sortByProperty('id', 'asc'));
-      const expected = [{ id: 1 }, { id: 3 }, { id: null }];
+      const expected = [a, c, b];
 
       expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array descending by the id property with null values', () => {
-      const unsortedArray = [{ id: 1 }, { id: null }, { id: 3 }];
+      const a = { id: 1 };
+      const b = { id: null };
+      const c = { id: 3 };
+
+      const unsortedArray = [a, b, c];
       const result = unsortedArray.sort(sortByProperty('id', 'desc'));
-      const expected = [{ id: 3 }, { id: 1 }, { id: null }];
+      const expected = [c, a, b];
 
       expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array ascending by the id property with null values', () => {
-      const unsortedArray = [{ id: 3 }, { id: undefined }, { id: 1 }];
+      const a = { id: 1 };
+      const b = { id: undefined };
+      const c = { id: 3 };
+
+      const unsortedArray = [c, b, a];
       const result = unsortedArray.sort(sortByProperty('id', 'asc'));
-      const expected = [{ id: 1 }, { id: 3 }, { id: undefined }];
+      const expected = [a, c, b];
 
       expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array descending by the id property with undefined values', () => {
-      const unsortedArray = [{ id: 1 }, { id: undefined }, { id: 3 }];
+      const a = { id: 1 };
+      const b = { id: undefined };
+      const c = { id: 3 };
+
+      const unsortedArray = [a, c, b];
       const result = unsortedArray.sort(sortByProperty('id', 'desc'));
-      const expected = [{ id: 3 }, { id: 1 }, { id: undefined }];
+      const expected = [c, a, b];
 
       expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array with a BigInt values ascending by the number property', () => {
-      const unsortedArray = [{ number: 1n }, { number: 2n }, { number: 3n }];
+      const a = { number: 1n };
+      const b = { number: 2n };
+      const c = { number: 3n };
+
+      const unsortedArray = [b, c, a];
       const result = unsortedArray.sort(sortByProperty('number', 'asc'));
-      const expected = [{ number: 1n }, { number: 2n }, { number: 3n }];
+      const expected = [a, b, c];
 
       expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array with a BigInt values descending by the number property', () => {
-      const unsortedArray = [{ number: 1n }, { number: 2n }, { number: 3n }];
+      const a = { number: 1n };
+      const b = { number: 2n };
+      const c = { number: 3n };
+
+      const unsortedArray = [b, c, a];
       const result = unsortedArray.sort(sortByProperty('number', 'desc'));
-      const expected = [{ number: 3n }, { number: 2n }, { number: 1n }];
+      const expected = [c, b, a];
 
       expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array with a Symbol values ascending by the number property', () => {
-      const a = Symbol('a');
-      const b = Symbol('b');
-      const c = Symbol('c');
+      const a = { symbol: Symbol('a') };
+      const b = { symbol: Symbol('b') };
+      const c = { symbol: Symbol('c') };
 
-      const unsortedArray = [{ symbol: a }, { symbol: b }, { symbol: c }];
+      const unsortedArray = [b, c, a];
       const result = unsortedArray.sort(sortByProperty('symbol', 'asc'));
-      const expected = [{ symbol: a }, { symbol: b }, { symbol: c }];
+      const expected = [a, b, c];
 
       expect(result).toStrictEqual(expected);
     });
 
     it('should sort an array with a Symbol values descending by the number property', () => {
-      const a = Symbol('a');
-      const b = Symbol('b');
-      const c = Symbol('c');
+      const a = { symbol: Symbol('a') };
+      const b = { symbol: Symbol('b') };
+      const c = { symbol: Symbol('c') };
 
-      const unsortedArray = [{ symbol: a }, { symbol: b }, { symbol: c }];
+      const unsortedArray = [a, b, c];
       const result = unsortedArray.sort(sortByProperty('symbol', 'desc'));
-      const expected = [{ symbol: c }, { symbol: b }, { symbol: a }];
+      const expected = [c, b, a];
+
+      expect(result).toStrictEqual(expected);
+    });
+
+    it('should sort a really deeply nested object in ascending order', () => {
+      const a = {
+        user: {
+          name: 'Anton',
+          location: {
+            country: {
+              name: 'Argentina',
+            },
+          },
+        },
+      };
+
+      const b = {
+        user: {
+          name: 'Boris',
+          location: {
+            country: {
+              name: 'Belgium',
+            },
+          },
+        },
+      };
+
+      const c = {
+        user: {
+          name: 'Chris',
+          location: {
+            country: {
+              name: 'Canada',
+            },
+          },
+        },
+      };
+
+      const unsortedArray = [a, b, c];
+      const result = unsortedArray.sort(sortByProperty('user.location.country.name', 'asc'));
+      const expected = [a, b, c];
+
+      expect(result).toStrictEqual(expected);
+    });
+
+    it('should sort a really deeply nested object in descending order', () => {
+      const a = {
+        user: {
+          name: 'Anton',
+          location: {
+            country: {
+              name: 'Argentina',
+            },
+          },
+        },
+      };
+
+      const b = {
+        user: {
+          name: 'Boris',
+          location: {
+            country: {
+              name: 'Belgium',
+            },
+          },
+        },
+      };
+
+      const c = {
+        user: {
+          name: 'Chris',
+          location: {
+            country: {
+              name: 'Canada',
+            },
+          },
+        },
+      };
+
+      const unsortedArray = [a, b, c];
+      const result = unsortedArray.sort(sortByProperty('user.location.country.name', 'desc'));
+      const expected = [c, b, a];
 
       expect(result).toStrictEqual(expected);
     });
