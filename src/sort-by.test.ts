@@ -114,6 +114,30 @@ describe('arrays', () => {
       expect(result).toEqual(expected);
     });
 
+    it('should sort an Symbol array ascending', () => {
+      const a = Symbol('a');
+      const b = Symbol('b');
+      const c = Symbol('c');
+
+      const unsortedArray = [c, b, a];
+      const result = unsortedArray.sort(sortBy('asc'));
+      const expected = [a, b, c];
+
+      expect(result).toEqual(expected);
+    });
+
+    it('should sort an Symbol array descending', () => {
+      const a = Symbol('a');
+      const b = Symbol('b');
+      const c = Symbol('c');
+
+      const unsortedArray = [a, b, c];
+      const result = unsortedArray.sort(sortBy('desc'));
+      const expected = [c, b, a];
+
+      expect(result).toEqual(expected);
+    });
+
     it('should error when all array items are not from the same type while sorting descending', () => {
       const unsortedArray = [1, '2', 3];
       const resultFn = () => unsortedArray.sort(sortBy('desc'));
@@ -479,6 +503,30 @@ describe('arrays', () => {
       const unsortedArray = [{ number: 1n }, { number: 2n }, { number: 3n }];
       const result = unsortedArray.sort(sortByProperty('number', 'desc'));
       const expected = [{ number: 3n }, { number: 2n }, { number: 1n }];
+
+      expect(result).toEqual(expected);
+    });
+
+    it('should sort an array with a BigInt values ascending by the number property', () => {
+      const a = Symbol('a');
+      const b = Symbol('b');
+      const c = Symbol('c');
+
+      const unsortedArray = [{ symbol: a }, { symbol: b }, { symbol: c }];
+      const result = unsortedArray.sort(sortByProperty('symbol', 'asc'));
+      const expected = [{ symbol: a }, { symbol: b }, { symbol: c }];
+
+      expect(result).toEqual(expected);
+    });
+
+    it('should sort an array with a BigInt values descending by the number property', () => {
+      const a = Symbol('a');
+      const b = Symbol('b');
+      const c = Symbol('c');
+
+      const unsortedArray = [{ symbol: a }, { symbol: b }, { symbol: c }];
+      const result = unsortedArray.sort(sortByProperty('symbol', 'desc'));
+      const expected = [{ symbol: c }, { symbol: b }, { symbol: a }];
 
       expect(result).toEqual(expected);
     });

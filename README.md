@@ -7,9 +7,10 @@ blogPosts.sort(sortByProperty('author.name', 'asc'));
 ```
 
 ## Features
+
 - Type-safety and Typescript autocompletion on the properties you try to sort
 - Define nested property to sort on using a path string like: `"author.name"`
-- Supports sorting by `string`, `number`, `Date` and `BigInt` values.
+- Supports sorting by `string`, `number`, `Date`, `Symbol` and `BigInt` values.
 - Handles `null` and `undefined` values gracefully by moving the object to the end of the array.
 
 ## Installation

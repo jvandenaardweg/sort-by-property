@@ -4,6 +4,7 @@ import { isNumber } from '@/utils/number';
 import { isArray } from '@/utils/array';
 import { isNil } from '@/utils/null';
 import { isBigInt } from '@/utils/big-int';
+import { isSymbol } from './utils/symbol';
 
 type SortFunctionReturn<T> = (a: T, b: T) => number;
 
@@ -18,11 +19,13 @@ export type SupportedTypes =
   | Date[]
   | bigint
   | bigint[]
+  | symbol
+  | symbol[]
   | null
   | undefined;
 
 /**
- * Sorts an array with `string`, `string[]`, `number`, `number[]`, `Date`, `Date[]`, `bigint` and `bigint[]` values in the given `direction`.
+ * Sorts an array with values from `SupportedTypes` in the given `direction`.
  */
 export function sortBy<T>(direction: SortByDirection): SortFunctionReturn<T> {
   return (a: T, b: T): number => {
@@ -66,6 +69,11 @@ export function sortBy<T>(direction: SortByDirection): SortFunctionReturn<T> {
 
         return 0;
       }
+
+      // symbol asc (a -> b)
+      if (isSymbol(a) && isSymbol(b)) {
+        return a.toString().localeCompare(b.toString());
+      }
     }
 
     // number desc (b -> a)
@@ -105,6 +113,11 @@ export function sortBy<T>(direction: SortByDirection): SortFunctionReturn<T> {
       }
 
       return 0;
+    }
+
+    // symbol desc (b -> a)
+    if (isSymbol(a) && isSymbol(b)) {
+      return b.toString().localeCompare(a.toString());
     }
 
     // if a is null or undefined and b is not, a is greater than b
