@@ -7,6 +7,18 @@ import { isBigInt } from '@/utils/big-int';
 
 export type SortByDirection = 'asc' | 'desc';
 
+export type SupportedTypes =
+  | number
+  | number[]
+  | string
+  | string[]
+  | Date
+  | Date[]
+  | bigint
+  | bigint[]
+  | null
+  | undefined;
+
 /**
  * Sorts an array with `string`, `string[]`, `number`, `number[]`, `Date`, `Date[]`, `bigint` and `bigint[]` values in the given `direction`.
  */
@@ -123,17 +135,7 @@ export type PathOfString<T, P extends string = ''> = {
     ? PathOfString<T[K], `${P}${K}.`> extends infer S
       ? `${S & string}`
       : never
-    : T[K] extends
-        | number
-        | number[]
-        | string
-        | string[]
-        | Date
-        | Date[]
-        | bigint
-        | bigint[]
-        | null
-        | undefined
+    : T[K] extends SupportedTypes
     ? `${P}${K}`
     : T[K] extends unknown[]
     ? PathOfString<T[K][number], `${P}${K}.`> extends infer S
