@@ -15,6 +15,7 @@
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
     "auto-changelog": "^2.4.0",
+    "dotenv-cli": "^6.0.0",
     "eslint": "^8.27.0",
     "husky": "^8.0.2",
     "jest": "^29.3.0",
@@ -41,7 +42,7 @@
     "performance:lodash-sortby": "nodemon --watch src src/examples/performance-lodash-sortby.ts",
     "performance:lodash-orderby": "nodemon --watch src src/examples/performance-lodash-orderby.ts",
     "prepare": "husky install",
-    "release": "release-it --changelog",
+    "release": "dotenv npx release-it",
     "lint-staged": "lint-staged"
   },
   "repository": {
