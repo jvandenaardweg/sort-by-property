@@ -1,4 +1,4 @@
-import { sortByProperty } from '../sort-by';
+import { sortByProperty } from '..';
 
 interface BlogPost {
   id: number;

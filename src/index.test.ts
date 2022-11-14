@@ -1,4 +1,4 @@
-import { sortBy, sortByProperty } from './sort-by';
+import { sortBy, sortByProperty } from './index';
 
 describe('arrays', () => {
   describe('sortBy', () => {
