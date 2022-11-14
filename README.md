@@ -14,6 +14,8 @@ blogPosts.sort(sortByProperty('author.name', 'asc'));
 - Handles `null` and `undefined` values gracefully by moving the object to the end of the array.
 - High performance, up to 3 times faster than lodash orderBy and sortBy *
 
+Try it out: https://codesandbox.io/s/sort-by-property-example-hin358
+
 ## Installation
 
 Install with your favorite package manager:
