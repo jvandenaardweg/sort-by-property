@@ -192,3 +192,5 @@ export function sortByProperty<T extends Record<string, any>>(
     return sortBy(direction)(aPropertyValue, bPropertyValue);
   };
 }
+
+export default sortByProperty;
