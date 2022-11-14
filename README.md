@@ -31,8 +31,16 @@ yarn add sort-by-property
 ```
 
 ## Usage
+```typescript
+// For an array of objects
+import { sortByProperty } from 'sort-by-property';
 
-## Sorting by object property
+// For one-dimensional arrays
+import { sortBy } from 'sort-by-property';
+
+```
+
+## Example: Sorting an array of objects
 ```typescript
 import { sortByProperty } from 'sort-by-property';
 
@@ -76,7 +84,7 @@ const blogPosts: BlogPost[] = [
 blogPosts.sort(sortByProperty('author.name', 'asc'));
 ```
 
-Will sort the array by `author.name`:
+Will sort the array `ascending` by `author.name`:
 
 ```typescript
 [
@@ -94,7 +102,7 @@ Will show an autocomplete of the available properties to sort on:
 
 ![autocomplete](https://github.com/jvandenaardweg/typed-sort-by/blob/main/src/examples/autocomplete.png?raw=true)
 
-## Sorting one-dimensional arrays
+## Example: Sorting one-dimensional arrays
 This package exports 2 methods. Use `sortBy` to sort one-dimensional arrays. This sorting method supports all the same types as `sortByProperty`.
 
 ```typescript
