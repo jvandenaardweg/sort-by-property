@@ -3,7 +3,7 @@
     "incremental": false,
     "target": "ES2020",
     "lib": ["ESNext"],
-    "module": "commonjs",
+    "module": "esnext",
     "moduleResolution": "node",
     "outDir": "./dist",
     "rootDir": "./src",

@@ -5,7 +5,8 @@ export default defineConfig({
   input: 'src/index.ts',
   output: {
     dir: 'dist',
-    format: 'commonjs',
+    format: 'cjs',
+    sourcemap: true,
     preserveModules: true,
   },
   plugins: [typescript()],
