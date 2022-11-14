@@ -45,7 +45,7 @@ interface BlogPost {
 const blogPosts: BlogPost[] = [
   {
     id: 1,
-    title: Never gonna run around and desert you,
+    title: 'Never gonna run around and desert you',
     author: {
       id: 10,
       name: 'Joe',
