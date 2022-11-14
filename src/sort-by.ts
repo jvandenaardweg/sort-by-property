@@ -1,9 +1,9 @@
-import { isDate } from '@/utils/date';
-import { getObjectKeysFromPathString, isString } from '@/utils/string';
-import { isNumber } from '@/utils/number';
-import { isArray } from '@/utils/array';
-import { isNil } from '@/utils/null';
-import { isBigInt } from '@/utils/big-int';
+import { isDate } from './utils/date';
+import { getObjectKeysFromPathString, isString } from './utils/string';
+import { isNumber } from './utils/number';
+import { isArray } from './utils/array';
+import { isNil } from './utils/null';
+import { isBigInt } from './utils/big-int';
 import { isSymbol } from './utils/symbol';
 import { getPropertyValueFromNames } from './utils/object';
 

@@ -5,6 +5,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "devDependencies": {
+    "@rollup/plugin-typescript": "^9.0.2",
     "@swc/core": "^1.3.14",
     "@swc/helpers": "^0.4.12",
     "@types/jest": "^29.2.2",
@@ -25,6 +26,7 @@
     "prettier": "^2.7.1",
     "regenerator-runtime": "^0.13.10",
     "release-it": "^15.5.0",
+    "rollup": "^3.3.0",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.0",
@@ -32,7 +34,7 @@
   },
   "scripts": {
     "prepublish": "npm run build",
-    "build": "tsc",
+    "build": "npx rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
     "test": "jest",
     "test:watch": "jest --watch",
     "performance": "nodemon --watch src src/examples/performance.ts",
