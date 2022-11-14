@@ -32,6 +32,7 @@ yarn add sort-by-property
 
 ## Usage
 
+## Sorting by object property
 ```typescript
 import { sortByProperty } from 'sort-by-property';
 
@@ -92,5 +93,18 @@ Will show a type error when you try to sort on properties that do not exist:
 Will show an autocomplete of the available properties to sort on:
 
 ![autocomplete](https://github.com/jvandenaardweg/typed-sort-by/blob/main/src/examples/autocomplete.png?raw=true)
+
+## Sorting one-dimensional arrays
+This package exports 2 methods. Use `sortBy` to sort one-dimensional arrays. This sorting method supports all the same types as `sortByProperty`.
+
+```typescript
+import { sortBy } from 'sort-by-property';
+
+const array = ['c', 'b', 'a'];
+
+array.sort(sortBy('asc'));
+
+// Result: ['a', 'b', 'c']
+```
 
 <sub>* on an array with 10 million items: ~450ms vs ~1350ms. See the /src/examples directory.</sub>
