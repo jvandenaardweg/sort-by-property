@@ -25,6 +25,12 @@
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*", "rollup.config.ts"],
-  "exclude": ["node_modules", "dist", "**/*.test.ts", "src/examples/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts", "src/examples/**/*"],
+  "ts-node": {
+    "swc": true,
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  }
 }
