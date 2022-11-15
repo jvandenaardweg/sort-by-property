@@ -25,11 +25,6 @@
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true
   },
-  // "files": ["./src/index.ts"],
   "include": ["src/**/*", "rollup.config.ts"],
-  "exclude": ["node_modules", "dist", "**/*.test.ts"],
-  "ts-node": {
-    "swc": true,
-    "require": ["tsconfig-paths/register"]
-  }
+  "exclude": ["node_modules", "dist", "**/*.test.ts", "src/examples/**/*"]
 }
