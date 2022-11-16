@@ -17,6 +17,10 @@ blogPosts.sort(sortByProperty('author.name', 'asc'));
 
 Try it out: https://codesandbox.io/s/sort-by-property-example-hin358
 
+## Requirements
+
+Requires Typescript 4.1+ because of the internal use of [template literals](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-1.html) for the autocompletion.
+
 ## Installation
 
 Install with your favorite package manager:
