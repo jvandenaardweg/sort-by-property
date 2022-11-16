@@ -10,8 +10,9 @@ blogPosts.sort(sortByProperty('author.name', 'asc'));
 
 - Type-safety and Typescript autocompletion on the properties you try to sort
 - Define nested property to sort on using a path string like: `"author.name"`
-- Supports sorting by `string`, `number`, `boolean`, `Date`, `Symbol` and `BigInt` values.
-- Handles `null` and `undefined` values gracefully by moving the object to the end of the array.
+- Supports sorting by `string`, `number`, `boolean`, `Date`, `Symbol` and `BigInt` values
+- Handles `null` and `undefined` values gracefully by moving the object to the end of the array
+- Small file size, only 0.6kb gzipped
 - High performance, up to 3 times faster than lodash orderBy and sortBy \*
 
 Try it out: https://codesandbox.io/s/sort-by-property-example-hin358
