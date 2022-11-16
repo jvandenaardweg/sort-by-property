@@ -6,6 +6,7 @@ import { isNil } from './utils/null';
 import { isBigInt } from './utils/big-int';
 import { isSymbol } from './utils/symbol';
 import { getPropertyValueFromNames } from './utils/object';
+import { isBoolean } from './utils/boolean';
 
 type SortFunctionReturn<T> = (a: T, b: T) => number;
 
@@ -130,7 +131,7 @@ export function sortBy<T>(direction: SortByDirection): SortFunctionReturn<T> {
       return b.toString().localeCompare(a.toString());
     }
 
-    // boolean asc (true -> false)
+    // boolean asc (false -> true)
     if (isBoolean(a) && isBoolean(b)) {
       if (b) return -1;
       if (a) return 1;
@@ -162,19 +163,19 @@ export function sortBy<T>(direction: SortByDirection): SortFunctionReturn<T> {
  *
  * Using this type gives auto-completion of object properties on the `propertyPath` parameter on `sortByProperty`.
  */
-export type PropertyPath<T, P extends string = ''> = {
+export type PropertyPath<T> = {
   [K in keyof T & string]: T[K] extends Record<string, unknown>
-    ? PropertyPath<T[K], `${P}${K}.`> extends infer S
-      ? `${S & string}`
+    ? PropertyPath<T[K]> extends infer S
+      ? `${K}.${S & string}`
       : never
     : T[K] extends SupportedTypes
-    ? `${P}${K}`
+    ? K
     : T[K] extends unknown[]
-    ? PropertyPath<T[K][number], `${P}${K}.`> extends infer S
-      ? `${S & string}`
+    ? PropertyPath<T[K][number]> extends infer S
+      ? `${K}.${S & string}`
       : never
-    : PropertyPath<T[K], `${P}${K}.`> extends infer S
-    ? `${S & string}`
+    : PropertyPath<T[K]> extends infer S
+    ? `${K}.${S & string}`
     : never;
 }[keyof T & string];
 
