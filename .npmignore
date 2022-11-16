@@ -8,3 +8,8 @@ coverage
 jest.config.js
 tsconfig.json
 .eslintrc
+rollup.config.ts
+
+# We output our files into one single bundle
+# so we don't need the declaration files in the utils folder to be in the npm package
+dist/utils
