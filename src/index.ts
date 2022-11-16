@@ -16,6 +16,8 @@ export type SupportedTypes =
   | number[]
   | string
   | string[]
+  | boolean
+  | boolean[]
   | Date
   | Date[]
   | bigint
@@ -75,6 +77,13 @@ export function sortBy<T>(direction: SortByDirection): SortFunctionReturn<T> {
       if (isSymbol(a) && isSymbol(b)) {
         return a.toString().localeCompare(b.toString());
       }
+
+      // boolean asc (true -> false)
+      if (isBoolean(a) && isBoolean(b)) {
+        if (a) return -1;
+        if (b) return 1;
+        return 0;
+      }
     }
 
     // number desc (b -> a)
@@ -119,6 +128,13 @@ export function sortBy<T>(direction: SortByDirection): SortFunctionReturn<T> {
     // symbol desc (b -> a)
     if (isSymbol(a) && isSymbol(b)) {
       return b.toString().localeCompare(a.toString());
+    }
+
+    // boolean asc (true -> false)
+    if (isBoolean(a) && isBoolean(b)) {
+      if (b) return -1;
+      if (a) return 1;
+      return 0;
     }
 
     // if a is null or undefined and b is not, a is greater than b

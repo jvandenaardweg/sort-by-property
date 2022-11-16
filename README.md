@@ -10,9 +10,9 @@ blogPosts.sort(sortByProperty('author.name', 'asc'));
 
 - Type-safety and Typescript autocompletion on the properties you try to sort
 - Define nested property to sort on using a path string like: `"author.name"`
-- Supports sorting by `string`, `number`, `Date`, `Symbol` and `BigInt` values.
+- Supports sorting by `string`, `number`, `boolean`, `Date`, `Symbol` and `BigInt` values.
 - Handles `null` and `undefined` values gracefully by moving the object to the end of the array.
-- High performance, up to 3 times faster than lodash orderBy and sortBy *
+- High performance, up to 3 times faster than lodash orderBy and sortBy \*
 
 Try it out: https://codesandbox.io/s/sort-by-property-example-hin358
 
@@ -31,16 +31,17 @@ yarn add sort-by-property
 ```
 
 ## Usage
+
 ```typescript
 // For an array of objects
 import { sortByProperty } from 'sort-by-property';
 
 // For one-dimensional arrays
 import { sortBy } from 'sort-by-property';
-
 ```
 
 ## Example: Sorting an array of objects
+
 ```typescript
 import { sortByProperty } from 'sort-by-property';
 
@@ -103,6 +104,7 @@ Will show an autocomplete of the available properties to sort on:
 ![autocomplete](https://github.com/jvandenaardweg/typed-sort-by/blob/main/src/examples/autocomplete.png?raw=true)
 
 ## Example: Sorting one-dimensional arrays
+
 This package exports 2 methods. Use `sortBy` to sort one-dimensional arrays. This sorting method supports all the same types as `sortByProperty`.
 
 ```typescript
@@ -115,4 +117,4 @@ array.sort(sortBy('asc'));
 // Result: ['a', 'b', 'c']
 ```
 
-<sub>* on an array with 10 million items: ~450ms vs ~1350ms. See the /src/examples directory.</sub>
+<sub>\* on an array with 10 million items: ~450ms vs ~1350ms. See the /src/examples directory.</sub>

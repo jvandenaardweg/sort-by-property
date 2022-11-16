@@ -138,6 +138,22 @@ describe('arrays', () => {
       expect(result).toStrictEqual(expected);
     });
 
+    it('should sort an array of booleans in ascending order', () => {
+      const unsortedArray = [true, false, true];
+      const result = unsortedArray.sort(sortBy('asc'));
+      const expected = [true, true, false];
+
+      expect(result).toStrictEqual(expected);
+    });
+
+    it('should sort an array of booleans as strings in descending order', () => {
+      const unsortedArray = [true, false, true];
+      const result = unsortedArray.sort(sortBy('desc'));
+      const expected = [false, true, true];
+
+      expect(result).toStrictEqual(expected);
+    });
+
     it('should error when all array items are not from the same type while sorting descending', () => {
       const unsortedArray = [1, '2', 3];
       const resultFn = () => unsortedArray.sort(sortBy('desc'));
@@ -562,6 +578,30 @@ describe('arrays', () => {
 
       const unsortedArray = [a, b, c];
       const result = unsortedArray.sort(sortByProperty('symbol', 'desc'));
+      const expected = [c, b, a];
+
+      expect(result).toStrictEqual(expected);
+    });
+
+    it('should sort an array of booleans in ascending order', () => {
+      const a = { boolean: true };
+      const b = { boolean: true };
+      const c = { boolean: false };
+
+      const unsortedArray = [b, c, a];
+      const result = unsortedArray.sort(sortByProperty('boolean', 'asc'));
+      const expected = [a, b, c];
+
+      expect(result).toStrictEqual(expected);
+    });
+
+    it('should sort an array of booleans in descending order', () => {
+      const a = { boolean: true };
+      const b = { boolean: true };
+      const c = { boolean: false };
+
+      const unsortedArray = [b, c, a];
+      const result = unsortedArray.sort(sortByProperty('boolean', 'desc'));
       const expected = [c, b, a];
 
       expect(result).toStrictEqual(expected);
