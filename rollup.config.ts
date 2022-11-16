@@ -1,13 +1,14 @@
 import { defineConfig } from 'rollup';
 import typescript from '@rollup/plugin-typescript';
+import terser from '@rollup/plugin-terser';
 
 export default defineConfig({
   input: 'src/index.ts',
   output: {
-    dir: 'dist',
+    file: 'dist/index.js',
     format: 'cjs',
     sourcemap: true,
-    preserveModules: true,
+    preserveModules: false,
   },
-  plugins: [typescript()],
+  plugins: [typescript(), terser()],
 });
