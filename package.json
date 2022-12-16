@@ -35,7 +35,7 @@
   },
   "scripts": {
     "prepublish": "npm run build",
-    "build": "npx rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
+    "build": "npx rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript --bundleConfigAsCjs",
     "test": "jest",
     "test:watch": "jest --watch",
     "performance": "nodemon --watch src src/examples/performance.ts",
