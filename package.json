@@ -23,7 +23,7 @@
     "lint-staged": "^13.0.4",
     "lodash.orderby": "^4.6.0",
     "lodash.sortby": "^4.7.0",
-    "node-dev": "^7.4.3",
+    "node-dev": "^8.0.0",
     "nodemon": "^2.0.20",
     "prettier": "^2.8.0",
     "regenerator-runtime": "^0.13.11",
