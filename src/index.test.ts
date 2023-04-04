@@ -18,6 +18,14 @@ describe('arrays', () => {
       expect(result).toStrictEqual(expected);
     });
 
+    it('should sort an string array ascending with a custom locale', () => {
+      const unsortedArray = ['Øl', 'Ål', 'Æsj'];
+      const result = unsortedArray.sort(sortBy('asc', {locale: 'nb-no'}));
+      const expected = ['Æsj', 'Øl', 'Ål'];
+
+      expect(result).toStrictEqual(expected);
+    })
+
     it('should sort an array of numbers as strings in ascending order', () => {
       const unsortedArray = ['1', '2.2', '22', '3'];
       const result = unsortedArray.sort(sortBy('asc'));
@@ -688,5 +696,21 @@ describe('arrays', () => {
 
       expect(result).toStrictEqual(expected);
     });
+
+    it('should sort an array with strings using a custom locale', () => {
+      const unsortedArray = [
+        { post: { title: 'Øl' } },
+        { post: { title: 'Ål' } },
+        { post: { title: 'Æsj' } },
+      ];
+      const result = unsortedArray.sort(sortByProperty('post.title', 'asc', {locale: 'nb-no'}));
+      const expected = [
+        { post: { title: 'Æsj' } },
+        { post: { title: 'Øl' } },
+        { post: { title: 'Ål' } },
+      ];
+
+      expect(result).toStrictEqual(expected);
+    })
   });
 });
