@@ -10,6 +10,14 @@ import { isBoolean } from './utils/boolean';
 
 type SortFunctionReturn<T> = (a: T, b: T) => number;
 
+interface SortOptions {
+  /**
+   * The locale(s) to use when sorting strings.
+   * @see String.localeCompare
+   */
+  locale?: Parameters<typeof String.prototype.localeCompare>[1];
+}
+
 export type SortByDirection = 'asc' | 'desc';
 
 export type SupportedTypes =
@@ -31,7 +39,7 @@ export type SupportedTypes =
 /**
  * Sorts an array with values from `SupportedTypes` in the given `direction`.
  */
-export function sortBy<T>(direction: SortByDirection): SortFunctionReturn<T> {
+export function sortBy<T>(direction: SortByDirection, options?: SortOptions): SortFunctionReturn<T> {
   return (a: T, b: T): number => {
     if (direction === 'asc') {
       // number asc (a -> b)
@@ -46,7 +54,7 @@ export function sortBy<T>(direction: SortByDirection): SortFunctionReturn<T> {
           return parseFloat(a) - parseFloat(b);
         }
 
-        return a.localeCompare(b);
+        return a.localeCompare(b, options?.locale);
       }
 
       // date asc (a -> b)
@@ -57,9 +65,9 @@ export function sortBy<T>(direction: SortByDirection): SortFunctionReturn<T> {
       // array asc (a -> b)
       if (isArray(a) && isArray(b)) {
         return a
-          .sort(sortBy(direction))
+          .sort(sortBy(direction, options))
           .toString()
-          .localeCompare(b.sort(sortBy(direction)).toString());
+          .localeCompare(b.sort(sortBy(direction, options)).toString(), options?.locale);
       }
 
       // bigint asc (a -> b)
@@ -76,7 +84,7 @@ export function sortBy<T>(direction: SortByDirection): SortFunctionReturn<T> {
 
       // symbol asc (a -> b)
       if (isSymbol(a) && isSymbol(b)) {
-        return a.toString().localeCompare(b.toString());
+        return a.toString().localeCompare(b.toString(), options?.locale);
       }
 
       // boolean asc (true -> false)
@@ -98,7 +106,7 @@ export function sortBy<T>(direction: SortByDirection): SortFunctionReturn<T> {
       if (!isNaN(a as unknown as number) && !isNaN(b as unknown as number)) {
         return parseFloat(b) - parseFloat(a);
       }
-      return b.localeCompare(a);
+      return b.localeCompare(a, options?.locale);
     }
 
     // date desc (b -> a)
@@ -109,9 +117,9 @@ export function sortBy<T>(direction: SortByDirection): SortFunctionReturn<T> {
     // array desc (b -> a)
     if (isArray(a) && isArray(b)) {
       return b
-        .sort(sortBy(direction))
+        .sort(sortBy(direction, options))
         .toString()
-        .localeCompare(a.sort(sortBy(direction)).toString());
+        .localeCompare(a.sort(sortBy(direction, options)).toString(), options?.locale);
     }
 
     // bigint desc (b -> a)
@@ -128,7 +136,7 @@ export function sortBy<T>(direction: SortByDirection): SortFunctionReturn<T> {
 
     // symbol desc (b -> a)
     if (isSymbol(a) && isSymbol(b)) {
-      return b.toString().localeCompare(a.toString());
+      return b.toString().localeCompare(a.toString(), options?.locale);
     }
 
     // boolean asc (false -> true)
@@ -187,6 +195,7 @@ export type PropertyPath<T> = {
 export function sortByProperty<T extends Record<string, any>>(
   propertyPath: PropertyPath<T>,
   direction: SortByDirection,
+  options?: SortOptions
 ): SortFunctionReturn<T> {
   // Create an array of properties to traverse.
   // Example `author.name` => ['author', 'name']
@@ -206,6 +215,6 @@ export function sortByProperty<T extends Record<string, any>>(
       bPropertyValue = getPropertyValueFromNames(propertyNames, b);
     }
 
-    return sortBy(direction)(aPropertyValue, bPropertyValue);
+    return sortBy(direction, options)(aPropertyValue, bPropertyValue);
   };
 }

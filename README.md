@@ -88,6 +88,9 @@ const blogPosts: BlogPost[] = [
 
 // Sort the blog posts by author name
 blogPosts.sort(sortByProperty('author.name', 'asc'));
+
+// If you need to use a custom locale for sorting strings, you can do
+blogPosts.sort(sortByProperty('author.name', 'asc', {locale: 'nb-no'}))
 ```
 
 Will sort the array `ascending` by `author.name`:
