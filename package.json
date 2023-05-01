@@ -24,7 +24,7 @@
     "lodash.orderby": "^4.6.0",
     "lodash.sortby": "^4.7.0",
     "node-dev": "^8.0.0",
-    "nodemon": "^2.0.20",
+    "nodemon": "^2.0.22",
     "prettier": "^2.8.4",
     "regenerator-runtime": "^0.13.11",
     "release-it": "^15.10.1",
